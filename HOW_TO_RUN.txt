@@ -1,0 +1,33 @@
+=========================================
+EcoPulse Pro: How to Run the Project
+=========================================
+
+This project has been restructured for professional academic presentation. Please follow the steps below in order.
+
+1. API CONFIGURATION
+-----------------------------------------
+Before running anything, ensure you have your `.env` file in the root folder containing your OpenWeather API key:
+OPENWEATHER_API_KEY=your_api_key_here
+
+
+2. TRAINING THE MODELS
+-----------------------------------------
+All training scripts have been moved to the `scripts/` folder. You must run them using this syntax:
+
+A) Fetch Data (Optional, if you need to update historical data):
+   python scripts/fetch_data.py
+
+B) Train the Advanced Daily Weather Model (Performs Tuning & Train/Val/Test Split):
+   python scripts/train_daily_model.py
+
+C) Train the Long-Term Rainfall Model:
+   python scripts/train_model.py
+
+
+3. RUNNING THE APP
+-----------------------------------------
+Once models are trained, run the web application from the root directory using Uvicorn:
+   uvicorn main:app --reload
+
+Then, open your web browser and navigate to:
+   http://localhost:8000
