@@ -213,10 +213,10 @@ def render_weather_forecast(city: str):
                     st.caption(f"{delta_min:+.1f} °C from today's {temp_min_today}°C")
                     
                 with res_col2:
-                    st.markdown("### ☁️ Open-Meteo Forecast")
+                    st.markdown("### ☁️ OpenWeather Forecast")
                     api_color = get_temp_color(api_temp_max) if isinstance(api_temp_max, float) else "#FFF"
                     st.markdown(f"**Tomorrow's High:** <span style='font-size:2em; font-weight:bold; color:{api_color};'>{api_temp_max} °C {weather_icon}</span>", unsafe_allow_html=True)
-                    st.caption("Open-Meteo API")
+                    st.caption("Commercial API")
                     
                 st.markdown("---")
                 st.markdown("### 📈 5-Day Live Weather Trend")
