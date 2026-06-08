@@ -157,12 +157,10 @@ def render_weather_forecast(city: str):
         forecast = fetch_weather_forecast(coords["lat"], coords["lon"])
         
         if str(forecast.get("cod")) == "200":
-            today_str = datetime.now().strftime("%Y-%m-%d")
-            today_items = [item for item in forecast["list"] if item["dt_txt"].startswith(today_str)]
+            # Take the next 24 hours (8 chunks of 3 hours) to guarantee we capture the daytime high,
+            # avoiding UTC timezone bugs when checking late at night.
+            today_items = forecast["list"][:8]
             
-            if not today_items:
-                today_items = [forecast["list"][0]]
-                
             temp_max_today = max([item["main"]["temp_max"] for item in today_items])
             temp_min_today = min([item["main"]["temp_min"] for item in today_items])
             wind_speed_today = max([item["wind"]["speed"] for item in today_items])
