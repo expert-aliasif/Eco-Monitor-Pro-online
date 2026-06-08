@@ -3,5 +3,3 @@ _env
 __pycache__/
 venv/
 *.pyc
-model/*.pkl
-data/*.csv
